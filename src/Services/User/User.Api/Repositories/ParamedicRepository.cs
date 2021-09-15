@@ -35,9 +35,9 @@ namespace User.Api.Repositories
             return _context.Paramedics.FirstOrDefault(p => p.Id == id);
         }
 
-        public async Task<List<Paramedic>> GetParamedics()
+        public List<Paramedic> GetParamedics()
         {
-            return await _context.Paramedics.ToListAsync();
+            return _context.Paramedics.ToList();
         }
 
         public async Task<Paramedic> PostParamedic(Paramedic paramedic)
