@@ -8,6 +8,12 @@ namespace User.Api.Repositories.IRepositories
 {
     public interface IParamedicRepository
     {
-        Task<Paramedic> postParamedic(Paramedic paramedic);
+        Task<Paramedic> PostParamedic(Paramedic paramedic);
+        Task<bool> UpdateParamedic(Paramedic paramedic);
+        Task<Paramedic> DeleteParamedic(int Id);
+        Task<List<Paramedic>> GetParamedics();
+        Paramedic GetParamedicById(int id);
+
+
     }
 }

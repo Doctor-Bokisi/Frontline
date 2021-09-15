@@ -16,7 +16,15 @@ namespace User.Api.Entities
         [Required]
         public string LastName { get; set; }
         [EmailAddress]
-        [Required]
+        [Required]  
         public string Email { get; set; }
+        [Required]
+        public string IdentityNumber { get; set; }
+        [Required]
+        public string Occupation { get; set; }
+        public string PassportNumber { get; set; }
+        public string CellPhoneNumber { get; set; }
+        public string AlternativeNumber { get; set; }
+
     }
 }
