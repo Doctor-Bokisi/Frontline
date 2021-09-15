@@ -30,5 +30,37 @@ namespace User.Api.Controllers
         {
             return Ok(_repo.GetParamedicById(id));
         }
+
+        [HttpPost]
+        public ActionResult<bool> PostParamedic([FromBody] Paramedic paramedic)
+        {
+            if (ModelState.IsValid)
+            {
+                _repo.PostParamedic(paramedic);
+                return StatusCode(201);
+            }
+
+            else return StatusCode(400);
+        }
+
+        [HttpPut]
+        public ActionResult<bool> UpdateParamedic([FromBody] Paramedic paramedic)
+        {
+            if (paramedic != null)
+            {
+                _repo.UpdateParamedic(paramedic);
+                return Ok(paramedic);
+            }
+
+            return StatusCode(400);
+        }
+
+        [HttpDelete]
+        public ActionResult DeleteParamedic(Paramedic paramedic)
+        {
+            var ObjectToPass = _repo.GetParamedicById(paramedic.Id);
+            _repo.DeleteParamedic(ObjectToPass);
+            return Ok();
+        }
     }
 }

@@ -17,17 +17,11 @@ namespace User.Api.Repositories
             _context = context;
         }
 
-        public async Task<Paramedic> DeleteParamedic(int Id)
+        public async Task<bool> DeleteParamedic(Paramedic paramedic)
         {
-            var result = await _context.Paramedics.FirstOrDefaultAsync(p => p.Id == Id);
-
-            if (result != null)
-            {
-                _context.Paramedics.Remove(result);
-                await _context.SaveChangesAsync();
-                return result;
-            }
-            return null;
+            _context.Paramedics.Remove(paramedic);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public Paramedic GetParamedicById(int id)
@@ -54,20 +48,9 @@ namespace User.Api.Repositories
 
         public async Task<bool> UpdateParamedic(Paramedic paramedic)
         {
-            try
-            {
-                var data = await _context.Paramedics.FirstOrDefaultAsync(e => e.Id == paramedic.Id);
-
-                if (data != null)
-                {
-                    _context.Paramedics.Update(data);
-                }
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            _context.Paramedics.Update(paramedic);
+             await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

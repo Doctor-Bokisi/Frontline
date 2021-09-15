@@ -10,7 +10,7 @@ namespace User.Api.Repositories.IRepositories
     {
         Task<Paramedic> PostParamedic(Paramedic paramedic);
         Task<bool> UpdateParamedic(Paramedic paramedic);
-        Task<Paramedic> DeleteParamedic(int Id);
+        Task<bool> DeleteParamedic(Paramedic paramedic);
         List<Paramedic> GetParamedics();
         Paramedic GetParamedicById(int id);
 
